@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row justify-content-center w-80">
+    <div class="col-6 align-items-center py-5 my-5 shadow-lg">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of listItems">
+          <div class="row">
+            <div class="col-10">
+              <h5>{{item.label}}</h5>
+            </div>
+            <div class="col-2">
+              <fa-icon (click)="onClick(item)" [size]="'2x'" [icon]="icon" style="cursor: pointer;"></fa-icon>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

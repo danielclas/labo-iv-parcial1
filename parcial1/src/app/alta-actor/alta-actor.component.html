@@ -1,0 +1,64 @@
+<div class="container">
+  <div class="row justify-content-center w-80">
+    <div class="col-10 py-3 my-3 shadow-lg">
+      <app-back-arrow></app-back-arrow>
+      <form [formGroup]="form" class="mt-2">
+        <h4>Alta de actor</h4>
+
+        <div class="row">
+          <div class="col-6 py-2">
+            <!-- Nombre -->
+            <div class="form-group">
+              <label for="nombre">Nombre</label>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre">
+            </div>
+
+            <!-- Apellido -->
+            <div class="form-group">
+              <label for="apellido">Apellido</label>
+              <input type="text" formControlName="apellido" class="form-control" placeholder="Apellido">
+            </div>
+
+            <!-- Nacionalidad -->
+            <div class="form-group">
+              <label for="nacionalidad">Nacionalidad</label>
+              <input disabled type="text" formControlName="nacionalidad" class="form-control" placeholder="Nacionalidad">
+            </div>
+
+            <!-- Sexo -->
+            <div class="form-group">
+              <label for="sexo">Sexo</label>
+              <select class="custom-select" formControlName="sexo">
+                <option selected> </option>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+              </select>
+            </div>
+
+            <!-- Nacimiento -->
+            <div class="form-group">
+              <p>Fecha de nacimiento</p>
+              <ngb-datepicker [minDate]="minDate" [maxDate]="maxDate" formControlName="nacimiento"></ngb-datepicker>
+            </div>
+
+          </div>
+
+          <div class="col-6 w-100" style="max-height: 500px; overflow-y: scroll;">
+            <app-tabla-paises (countrySelected)="onCountrySelected($event)" ></app-tabla-paises>
+          </div>
+        </div>
+
+        <button (click)="onSubmit()" [disabled]="form.invalid || loading" type="submit" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <span *ngIf="!loading"> Registrar actor </span>
+        </button>
+
+      </form>
+
+      <p class="my-2" *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (closed)="close(alert)">{{ alert.message }}</ngb-alert>
+      </p>
+
+    </div>
+  </div>
+</div>
