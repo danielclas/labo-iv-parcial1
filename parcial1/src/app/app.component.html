@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<nav class="navbar border shadow-lg sticky-top navbar-light bg-light header" [@animateGallery]="'slideInUp'">
+  <a class="navbar-brand ml-3" target="blank" href="https://github.com/danielclas/labo-iv-parcial1/">
+    <fa-icon [icon]="icon" [size]="'2x'" class="text-primary"></fa-icon>
+    <b>
+      Daniel Clas - Primer parcial
+    </b>
+  </a>
+</nav>
+
+<div class="background">
+  <router-outlet></router-outlet>
+</div>

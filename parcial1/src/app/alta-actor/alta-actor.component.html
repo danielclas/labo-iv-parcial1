@@ -1,6 +1,6 @@
-<div class="container">
+<div class="container" [@animateGallery]="'slideInRight'">
   <div class="row justify-content-center w-80">
-    <div class="col-10 py-3 my-3 shadow-lg">
+    <div class="col-10 py-3 my-3 shadow-lg bg-light">
       <app-back-arrow></app-back-arrow>
       <form [formGroup]="form" class="mt-2">
         <h4>Alta de actor</h4>
@@ -35,12 +35,17 @@
               </select>
             </div>
 
+            <!-- Foto -->
+            <div class="form-group">
+              <label for="sexo">Foto</label>
+              <input  type="file" formControlName="foto" class="form-control-file" (change)="onFileChange($event)">
+            </div>
+
             <!-- Nacimiento -->
             <div class="form-group">
               <p>Fecha de nacimiento</p>
               <ngb-datepicker [minDate]="minDate" [maxDate]="maxDate" formControlName="nacimiento"></ngb-datepicker>
             </div>
-
           </div>
 
           <div class="col-6 w-100" style="max-height: 500px; overflow-y: scroll;">

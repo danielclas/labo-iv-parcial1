@@ -11,7 +11,7 @@ import { Country } from '../models/country';
 
 export class TablaPaisesComponent implements OnInit {
 
-  url: string = 'https://restcountries.eu/rest/v2/region/americas';
+  url: string = 'https://restcountries.eu/rest/v2/all';
   countries: Country[] = [];
 
   @Output() countrySelected = new EventEmitter<Country>();

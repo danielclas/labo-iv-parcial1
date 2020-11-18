@@ -8,6 +8,7 @@
     </div>
   </div>
   <div class="row justify-content-center">
-    <img [src]="actor.foto" alt="Foto del actor" style="height: 100px;">
+    <img *ngIf="foto" [src]="foto" alt="Foto del actor" style="height: 100px;">
+    <span *ngIf="!foto" class="spinner-border spinner-border-sm mr-1"></span>
   </div>
 </div>

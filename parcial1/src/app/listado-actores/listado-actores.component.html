@@ -1,5 +1,5 @@
-<div class="container">
-  <div class="row justify-content-center w-80 h-100">
+<div class="container" [@animateGallery]="'slideInRight'">
+  <div class="row justify-content-center w-80 h-100 bg-light">
     <div class="col-12 py-3 my-3 shadow-lg">
       <app-back-arrow></app-back-arrow>
       <form class="mt-2">
@@ -12,14 +12,20 @@
 
           <div class="col-6 w-100">
             <div class="row mt-1 justify-content-center">
-              <button [disabled]="!selected" class="btn btn-danger mx-1" (click)="switchAction('borrar')">Borrar</button>
-              <button [disabled]="!selected" class="btn btn-success mx-1" (click)="switchAction('mostrar')">Mostrar</button>
-              <button [disabled]="!selected" class="btn btn-primary mx-1" (click)="switchAction('modificar')">Modificar</button>
+              <button [disabled]="!selected" class="btn btn-primary m-1 p-2" (click)="switchAction('borrar')">Borrar actor</button>
+              <button [disabled]="!selected" class="btn btn-primary m-1 p-2" (click)="switchAction('mostrar')">Mostrar actor</button>
+              <button [disabled]="!selected" class="btn btn-primary m-1 p-2" (click)="switchAction('modificar')">Modificar actor</button>
+            </div>
+            <div class="row mt-1 justify-content-center">
+              <button [disabled]="!selected" class="btn btn-primary m-1 p-2" (click)="switchAction('peliculas')">Mostrar peliculas</button>
+              <button [disabled]="!selected" class="btn btn-primary m-1 p-2" (click)="switchAction('pais')">Mostrar pais</button>
             </div>
             <div class="row my-3 justify-content-center">
               <app-borrar-actor class="p-3" (action)="onDelete($event)" [actor]="selected" *ngIf="selected && action == 'borrar'"></app-borrar-actor>
               <app-detalles-actor class="p-3" [actor]="selected" *ngIf="selected && action == 'mostrar'"></app-detalles-actor>
               <app-modificar-actor class="p-3" [actor]="selected" *ngIf="selected && action == 'modificar'" (closeEvent)="switchAction('modificar')"></app-modificar-actor>
+              <app-listado-peliculas class="p-3" [actor]="selected" *ngIf="selected && action == 'peliculas'"></app-listado-peliculas>
+              <app-detalles-pais [pais]="selected.nacionalidad" *ngIf="selected && action == 'pais'"></app-detalles-pais>
             </div>
           </div>
         </div>

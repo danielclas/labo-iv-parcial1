@@ -1,0 +1,10 @@
+<div class="container justify-content-center">
+  <h5>Películas en las que participó este actor</h5>
+  <hr>
+  <ul class="list-group">
+    <li style="cursor: pointer;" class="list-group-item" *ngFor="let item of peliculas">
+        <h6><strong>{{item.nombre}}</strong></h6>
+    </li>
+  </ul>
+  <h5 *ngIf="peliculas && peliculas.length == 0">No hay ninguna película registrada en la que este actor participe</h5>
+</div>

@@ -1,1 +1,67 @@
-<p>alta-pelicula works!</p>
+<div class="container" [@animateGallery]="'slideInRight'">
+  <div class="row justify-content-center w-80">
+    <div class="col-10 py-3 my-3 shadow-lg bg-light">
+      <app-back-arrow></app-back-arrow>
+      <form [formGroup]="form" class="mt-2">
+        <h4>Alta de película</h4>
+
+        <div class="row">
+          <div class="col-6 py-2">
+            <!-- Nombre -->
+            <div class="form-group">
+              <label for="nombre">Nombre de la película</label>
+              <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre">
+            </div>
+
+            <!-- Director -->
+            <div class="form-group">
+              <label for="director">Director</label>
+              <input type="text" formControlName="director" class="form-control" placeholder="Director">
+            </div>
+
+            <!-- Pais -->
+            <div class="form-group">
+              <label for="pais">País de filmación</label>
+              <select class="custom-select" formControlName="pais">
+                <option selected> </option>
+                <option *ngFor="let pais of paises" [value]="pais.name">{{pais.name}}</option>
+              </select>
+            </div>
+
+            <!-- Fecha -->
+            <div class="form-group">
+              <p>Fecha de filmación</p>
+              <ngb-datepicker [minDate]="minDate" [maxDate]="maxDate" formControlName="fecha"></ngb-datepicker>
+            </div>
+
+            <!-- Actores -->
+            <div class="form-group">
+              <p>Actores</p>
+              <ul class="list-group">
+                <li style="cursor: pointer;" class="list-group-item" (click)="onActorClicked(actor)" *ngFor="let actor of actores">
+                  <p>{{actor.nombre}} {{actor.apellido}} </p>
+                </li>
+              </ul>
+              <p *ngIf="actores.length == 0">No se han seleccionado actores</p>
+            </div>
+          </div>
+
+          <div class="col-6 w-100" style="max-height: 500px; overflow-y: scroll;">
+            <app-tabla-actores (actorSelected)="onActorClicked($event)"></app-tabla-actores>
+          </div>
+        </div>
+
+        <button (click)="onSubmit()" [disabled]="form.invalid || loading" type="submit" class="btn btn-primary">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          <span *ngIf="!loading"> Registrar pelicula </span>
+        </button>
+
+      </form>
+
+      <p class="my-2" *ngFor="let alert of alerts">
+        <ngb-alert [type]="alert.type" (click)="close(alert)">{{ alert.message }}</ngb-alert>
+      </p>
+
+    </div>
+  </div>
+</div>

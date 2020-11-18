@@ -1,0 +1,25 @@
+<div class="container justify-content-center">
+  <h5>Detalles del país del actor</h5>
+  <hr>
+  <ul class="list-group" *ngIf="selected">
+    <li class="list-group-item">
+        <h6><strong>Nombre: </strong>{{selected.name}}</h6>
+    </li>
+    <li class="list-group-item">
+        <h6><strong>Capital: </strong>{{selected.capital}}</h6>
+    </li>
+    <li class="list-group-item">
+        <h6><strong>Moneda: </strong>{{selected.currency}}</h6>
+    </li>
+    <li class="list-group-item">
+        <h6><strong>Población: </strong>{{selected.population}}</h6>
+    </li>
+    <li class="list-group-item">
+        <h6><strong>Región: </strong>{{selected.region}}</h6>
+    </li>
+    <li class="list-group-item justify-content-center" style="text-align: center;">
+        <img [src]="selected.flag" alt="Bandera del país" style="height: 50px;">
+    </li>
+  </ul>
+  <h5 *ngIf="!selected">No se encontró país para mostrar</h5>
+</div>

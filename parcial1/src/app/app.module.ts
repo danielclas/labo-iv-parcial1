@@ -20,6 +20,9 @@ import { TablaActoresComponent } from './tabla-actores/tabla-actores.component';
 import { BorrarActorComponent } from './borrar-actor/borrar-actor.component';
 import { ModificarActorComponent } from './modificar-actor/modificar-actor.component';
 import { DetallesActorComponent } from './detalles-actor/detalles-actor.component';
+import { ListadoPeliculasComponent } from './listado-peliculas/listado-peliculas.component';
+import { DetallesPaisComponent } from './detalles-pais/detalles-pais.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCEBUjB-Qj4P9vlb7YC8jNmQZAohed91kM",
@@ -43,12 +46,15 @@ const firebaseConfig = {
     TablaActoresComponent,
     BorrarActorComponent,
     ModificarActorComponent,
-    DetallesActorComponent
+    DetallesActorComponent,
+    ListadoPeliculasComponent,
+    DetallesPaisComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

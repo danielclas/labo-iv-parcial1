@@ -1,3 +1,4 @@
+import { AnimateGallery } from './../animations';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { faArrowRight, IconDefinition} from '@fortawesome/free-solid-svg-icons';
@@ -10,7 +11,8 @@ interface ListItem{
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  animations: [AnimateGallery]
 })
 
 export class HomeComponent implements OnInit {
@@ -18,8 +20,8 @@ export class HomeComponent implements OnInit {
   icon: IconDefinition = faArrowRight;
   listItems: ListItem[] = [
     {label: 'Alta actor', link: '/alta-actor'},
-    {label: 'Listado de actores', link: '/listado-actores'},
-    {label: 'Alta de peliculas', link: '/alta-peliculas'},
+    {label: 'Listado de actores/películas', link: '/listado-actores'},
+    {label: 'Alta de peliculas', link: '/alta-peliculas'}
   ]
 
   constructor(private router: Router) { }
