@@ -1,13 +1,17 @@
 <div class="container">
   <ul class="list-group">
     <li style="cursor: pointer;" class="list-group-item" (click)="onClick(country)" *ngFor="let country of countries">
-      <div class="row">
+      <div class="row justify-content-center">
         <div class="col-8">
-          <h5>{{country.name}}</h5>
+          <p *ngIf="size == 'sm'">{{country.name}}</p>
+          <h5 *ngIf="!size">{{country.name}}</h5>
         </div>
-        <div class="col-2">
+        <div class="col-2" *ngIf="!size">
           <img class="align-self-end" [src]="country.flag" [alt]="country.name" style="height: 50px;">
         </div>
+      </div>
+      <div class="row justify-content-center" *ngIf="size == 'sm'">
+        <img class="align-self-end" [src]="country.flag" [alt]="country.name" style="height: 25px;">
       </div>
     </li>
   </ul>

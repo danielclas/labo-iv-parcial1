@@ -1,0 +1,11 @@
+<div class="container">
+  <ul class="list-group">
+    <li style="cursor: pointer;" class="list-group-item" (click)="onClick(actor)" *ngFor="let actor of actores" [ngClass]="selected == actor ? 'active' : ''" >
+      <div class="row">
+        <div class="col-8">
+          <h5>{{actor.nombre}} {{actor.apellido}}</h5>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

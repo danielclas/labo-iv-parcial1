@@ -5,7 +5,7 @@ export interface Actor {
   nombre: string,
   apellido: string,
   sexo: string,
-  nacimiento: Date,
+  nacimiento: any,
   nacionalidad: Country,
   foto?: string
 }

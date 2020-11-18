@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { EventEmitter } from '@angular/core';
 import { Country } from '../models/country';
 
@@ -15,6 +15,7 @@ export class TablaPaisesComponent implements OnInit {
   countries: Country[] = [];
 
   @Output() countrySelected = new EventEmitter<Country>();
+  @Input() size: string;
 
   constructor(private http: HttpClient) { }
 

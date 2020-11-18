@@ -1,0 +1,13 @@
+<div class="container border p-3 mr-2 w-100">
+  <div class="row justify-content-center my-2 p-4 w-100">
+    <div class="col align-items-center w-100">
+      <p><strong>Nombre: </strong>{{actor.nombre + ' ' + actor.apellido}}</p>
+      <p><strong>Nacionalidad: </strong>{{actor.nacionalidad}}</p>
+      <p><strong>Fecha de nacimiento: </strong>{{actor.nacimiento.toDate() | date:'shortDate'}}</p>
+      <p><strong>Genero: </strong>{{actor.sexo}}</p>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <img [src]="actor.foto" alt="Foto del actor" style="height: 100px;">
+  </div>
+</div>

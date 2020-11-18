@@ -7,13 +7,12 @@ import { AngularFireStorage } from '@angular/fire/storage';
 })
 export class RepositoryService {
 
-
   constructor(
     private firestore: AngularFirestore,
     private storage: AngularFireStorage) { }
 
   getAll(collection: string){
-    return this.firestore.collection(collection).get();
+    return this.firestore.collection(collection);
   }
 
   getOne(collection: string, uid: string){
@@ -26,5 +25,9 @@ export class RepositoryService {
 
   add(collection: string, obj: {}){
     return this.firestore.collection(collection).add({...obj});
+  }
+
+  delete(collection: string, uid: string){
+    return this.firestore.collection(collection).doc(uid).delete();
   }
 }

@@ -16,6 +16,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { HttpClientModule } from '@angular/common/http';
 import { BackArrowComponent } from './back-arrow/back-arrow.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TablaActoresComponent } from './tabla-actores/tabla-actores.component';
+import { BorrarActorComponent } from './borrar-actor/borrar-actor.component';
+import { ModificarActorComponent } from './modificar-actor/modificar-actor.component';
+import { DetallesActorComponent } from './detalles-actor/detalles-actor.component';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCEBUjB-Qj4P9vlb7YC8jNmQZAohed91kM",
@@ -35,7 +39,11 @@ const firebaseConfig = {
     AltaActorComponent,
     ListadoActoresComponent,
     AltaPeliculaComponent,
-    BackArrowComponent
+    BackArrowComponent,
+    TablaActoresComponent,
+    BorrarActorComponent,
+    ModificarActorComponent,
+    DetallesActorComponent
   ],
   imports: [
     BrowserModule,

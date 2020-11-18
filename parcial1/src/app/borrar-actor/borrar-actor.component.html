@@ -1,0 +1,9 @@
+<div class="container border p-3 mr-2">
+  <div class="row justify-content-center my-2 p-4">
+      <h5>Usted está a punto de borrar al actor <strong>{{actor.nombre +  ' ' + actor.apellido}}</strong>. Presione confirmar o cancelar</h5>
+  </div>
+  <div class="row justify-content-center">
+    <button class="btn btn-danger mx-2 p-2" (click)="onClick(true)">Confirmar</button>
+    <button class="btn btn-warning mx-2 p-2" (click)="onClick(false)">Cancelar</button>
+  </div>
+</div>

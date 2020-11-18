@@ -1,22 +1,27 @@
-import { Actor } from './../models/actor';
-import { RepositoryService } from './../services/repository.service';
-import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Country } from '../models/country';
-import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
+import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { Alert } from '../models/alert';
-@Component({
-  selector: 'app-alta-actor',
-  templateUrl: './alta-actor.component.html',
-  styleUrls: ['./alta-actor.component.css']
-})
+import { Actor } from '../models/actor';
+import { Country } from '../models/country';
+import { RepositoryService } from '../services/repository.service';
+import { NgbDatepicker, NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
 
-export class AltaActorComponent implements OnInit {
+@Component({
+  selector: 'app-modificar-actor',
+  templateUrl: './modificar-actor.component.html',
+  styleUrls: ['./modificar-actor.component.css']
+})
+export class ModificarActorComponent implements OnInit, AfterViewInit {
 
   form: FormGroup;
   country: Country;
   alerts: Alert[] = [];
   loading: boolean = false;
+  startDate: NgbDateStruct;
+
+  @ViewChild(NgbDatepicker) child: NgbDatepicker;
+  @Input() actor: Actor;
+  @Output() closeEvent = new EventEmitter();
 
   minDate: NgbDateStruct = {year: 1900, month: 1, day: 1};
   maxDate: NgbDateStruct = {year: 2019, month: 12, day: 31};
@@ -33,6 +38,23 @@ export class AltaActorComponent implements OnInit {
       nacimiento: ['', [Validators.required]],
       nacionalidad: ['', [Validators.required]]
     })
+
+    let date: Date = this.actor.nacimiento.toDate();
+
+    this.nombre.setValue(this.actor.nombre);
+    this.apellido.setValue(this.actor.apellido);
+    this.sexo.setValue(this.actor.sexo);
+    this.nacionalidad.setValue(this.actor.nacionalidad);
+    this.nacimiento.setValue(date);
+
+    this.startDate = {year: date.getFullYear(), month: date.getMonth()+1, day: date.getDate()};
+  }
+
+  ngAfterViewInit(){
+    setTimeout(() => {
+      this.child.focusDate(this.startDate);
+      this.child.focusSelect();
+    }, 500);
   }
 
   get nombre() { return this.form.get('nombre'); }
@@ -62,10 +84,9 @@ export class AltaActorComponent implements OnInit {
       nacionalidad: this.nacionalidad.value
     }
 
-    this.repository.add('actores', obj).then(res => {
+    this.repository.update('actores', this.actor.id, obj).then(res => {
       this.loading = false;
-      this.form.reset();
-      this.alerts.push({type: 'success', message: 'Actor agregado exitosamente'});
+      this.closeEvent.emit();
     })
   }
 

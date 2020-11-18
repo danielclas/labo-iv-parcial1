@@ -1,1 +1,33 @@
-<p>listado-actores works!</p>
+<div class="container">
+  <div class="row justify-content-center w-80 h-100">
+    <div class="col-12 py-3 my-3 shadow-lg">
+      <app-back-arrow></app-back-arrow>
+      <form class="mt-2">
+        <h4>Listado de actores</h4>
+
+        <div class="row">
+          <div class="col-6 py-2">
+            <app-tabla-actores (actorSelected)="onActorSelected($event)"></app-tabla-actores>
+          </div>
+
+          <div class="col-6 w-100">
+            <div class="row mt-1 justify-content-center">
+              <button [disabled]="!selected" class="btn btn-danger mx-1" (click)="switchAction('borrar')">Borrar</button>
+              <button [disabled]="!selected" class="btn btn-success mx-1" (click)="switchAction('mostrar')">Mostrar</button>
+              <button [disabled]="!selected" class="btn btn-primary mx-1" (click)="switchAction('modificar')">Modificar</button>
+            </div>
+            <div class="row my-3 justify-content-center">
+              <app-borrar-actor class="p-3" (action)="onDelete($event)" [actor]="selected" *ngIf="selected && action == 'borrar'"></app-borrar-actor>
+              <app-detalles-actor class="p-3" [actor]="selected" *ngIf="selected && action == 'mostrar'"></app-detalles-actor>
+              <app-modificar-actor class="p-3" [actor]="selected" *ngIf="selected && action == 'modificar'" (closeEvent)="switchAction('modificar')"></app-modificar-actor>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <p class="my-2" *ngFor="let alert of []">
+        <ngb-alert [type]="alert.type" (click)="close(alert)">{{ alert.message }}</ngb-alert>
+      </p>
+    </div>
+  </div>
+</div>
